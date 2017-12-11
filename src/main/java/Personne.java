@@ -1,18 +1,18 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Personne {
 
 	
-	private Boolean estUnClient;
+	private Boolean estUnClient=false;
 	private String nom;
 	private String prenom;
 	private Date dateDeNaissance;
-	
+	private List<Contrat> listContrats = new ArrayList<Contrat>();
 	
 	public Boolean estClient() {
-		if (estUnClient)return true;
-		else return false;
+		return estUnClient;
 	}
 	 public String obtenirNomComplet() {
 		 String nomComplet;
@@ -25,6 +25,12 @@ public class Personne {
 	 }
 	 
 	 public Contrat creerContrat() {
+		 Contrat c;
+		 c.creationContrat();
+		 estUnClient=true;
+		 listContrats.add(c);
+		 
+		 return c;
 		 
 	 }
 	 
@@ -38,15 +44,43 @@ public class Personne {
 	 }
 	 
 	 public List<Contrat> obtenirContrats(){
+		 List<Contrat> list = new ArrayList<Contrat>();
+		 for(Contrat c:listContrats) {
+			 list.add(c);
+		 }
 		 
+		 return list;
 	 }
 	 
 	 public List<Contrat> obtenirContratsAuto(){
-		 
+		 List<Contrat> list = new ArrayList<Contrat>();
+		 for(Contrat c: listContrats) {
+			 if(c.getClass().equals("ContratAuto")) {
+				 list.add(c);
+			 }
+		 }
+		 return list;
 	 }
 	 
 	 public List<Contrat> obtenirContratsMRH(){
-		 
+		 List<Contrat> list = new ArrayList<Contrat>();
+		 for(Contrat c: listContrats) {
+			 if(c.getClass().equals("ContratMRH")) {
+				 list.add(c);
+			 }
+		 }
+		 return list; 
+	 }
+	 
+	 
+	 public List<Contrat> obtenirContratsPrevoyance(){
+		 List<Contrat> list = new ArrayList<Contrat>();
+		 for(Contrat c: listContrats) {
+			 if(c.getClass().equals("ContratPrevoyance")) {
+				 list.add(c);
+			 }
+		 }
+		 return list; 
 	 }
 	 
 	 public String toString() {

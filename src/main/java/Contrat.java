@@ -2,8 +2,8 @@ import java.util.List;
 
 public abstract class Contrat {
 
-	private String numeroContrat;
-	private Boolean contratValide;
+	protected String numeroContrat;
+	protected Boolean contratValide;
 	
 	
 	public abstract Contrat creationContrat() {
