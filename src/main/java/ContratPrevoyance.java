@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ContratPrevoyance extends Contrat {
+public class ContratPrevoyance extends Contrat {
 
 	
 	public List<String> determinerGaranties(){
@@ -16,7 +16,13 @@ public abstract class ContratPrevoyance extends Contrat {
 		return 75.0;
 	}
 	
-	public Contrat CreationContrat(){
+	public Contrat CreationContrat(String numContrat){
+	
+		this.contratValide=true;
+		this.numeroContrat=numContrat;
+		
+		
+		return this;
 		
 	}
 }

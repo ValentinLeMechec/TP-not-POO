@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Personne {
@@ -8,8 +9,15 @@ public class Personne {
 	private Boolean estUnClient=false;
 	private String nom;
 	private String prenom;
-	private Date dateDeNaissance;
+	private GregorianCalendar dateDeNaissance;
 	private List<Contrat> listContrats = new ArrayList<Contrat>();
+	
+	
+	Personne(String n, String pr, GregorianCalendar d){
+		nom=n;
+		prenom=pr;
+		dateDeNaissance=d;
+	}
 	
 	public Boolean estClient() {
 		return estUnClient;
@@ -20,17 +28,48 @@ public class Personne {
 		 return nomComplet;
 	 }
 	 
-	 public Date obtenirDateDeNaissance() {
+	 public GregorianCalendar obtenirDateDeNaissance() {
 		 return dateDeNaissance;
 	 }
 	 
-	 public Contrat creerContrat() {
-		 Contrat c;
-		 c.creationContrat();
-		 estUnClient=true;
-		 listContrats.add(c);
+	 public int obtenirNbContrats() {
+		 int i=0;
+		 for(Contrat c:listContrats) {
+			 i++;
+		 }
+		 return i;
+	 }
+	 
+	 public Contrat creerContrat(String s,String numContrat) {
 		 
-		 return c;
+		 if( s.equals("Auto")) {
+			 ContratAuto c=new ContratAuto();
+			 c.creationContrat(numContrat);
+			 listContrats.add(c);
+			 estUnClient=true;
+			 return c;
+		 }
+		 
+		 if(s.equals("MRH")) {
+			 ContratMRH c=new ContratMRH();
+			 c.creationContrat(numContrat);
+			 listContrats.add(c);
+			 estUnClient=true;
+			 return c;
+		 }
+		 
+		 if(s.equals("Prevoyance")) {
+			 ContratPrevoyance c= new ContratPrevoyance();
+			 c.creationContrat(numContrat);
+			 listContrats.add(c);
+			 estUnClient=true;
+			 return c;
+		 }
+		 else return null;
+		 
+		 
+		
+		 
 		 
 	 }
 	 
@@ -83,8 +122,6 @@ public class Personne {
 		 return list; 
 	 }
 	 
-	 public String toString() {
-		 
-	 }
+	 
 	
 }

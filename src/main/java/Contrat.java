@@ -6,15 +6,16 @@ public abstract class Contrat {
 	protected Boolean contratValide;
 	
 	
-	public abstract Contrat creationContrat() {
+	public Contrat creationContrat(String s) {
+		return null;
 		
 	}
 	
-	public abstract List<String> determinerGaranties(){
-		
+	public List<String> determinerGaranties(){
+		return null;
 	}
 	
-	public abstract double determinerCotisation() {
-		
+	public double determinerCotisation() {
+		return (Double) null;
 	}
 }
